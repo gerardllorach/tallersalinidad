@@ -1,0 +1,80 @@
+/* ===== Póster A0 horizontal (1189 × 841 mm) ===== */
+:root {
+  --bg: #ffffff;
+  --text: #151a2b;
+  --muted: #5b6478;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #dde2ea;
+  color: var(--text);
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Barra de herramientas (no se imprime) */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(10, 12, 24, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.toolbar-title { font-weight: 700; margin-right: auto; color: #f4f6ff; }
+.toolbar button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4cc9f0, #7b61ff);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.toolbar button:disabled { opacity: 0.4; cursor: wait; }
+.toolbar button:focus-visible { outline: 3px solid #fde047; outline-offset: 2px; }
+.status { color: #aab3d6; font-size: 14px; }
+
+/* Vista previa en pantalla */
+.stage {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+#poster {
+  display: block;
+  width: min(96vw, calc((100vh - 120px) * 1189 / 841));
+  height: auto;
+  aspect-ratio: 1189 / 841;
+  background: var(--bg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Tipografías dentro del SVG */
+#poster .display { font-family: "Fredoka", "Atkinson Hyperlegible", sans-serif; font-weight: 700; }
+#poster .body    { font-family: "Atkinson Hyperlegible", system-ui, sans-serif; }
+
+/* ===== Impresión ===== */
+@page {
+  size: 1189mm 841mm;
+  margin: 0;
+}
+@media print {
+  html, body { background: var(--bg); }
+  .toolbar { display: none; }
+  .stage { padding: 0; display: block; }
+  #poster {
+    width: 1189mm;
+    height: 841mm;
+    box-shadow: none;
+  }
+}

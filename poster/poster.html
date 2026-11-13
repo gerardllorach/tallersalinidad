@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Póster A0 · ¿Cuánta sal tiene el mar? · ICM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="poster.css" />
+</head>
+<body>
+
+  <div class="toolbar">
+    <span class="toolbar-title">Póster A0 horizontal · 1189 × 841 mm</span>
+    <button id="btn-print" disabled>🖨️ Imprimir / Guardar PDF</button>
+    <button id="btn-svg" disabled>⬇️ Descargar SVG</button>
+    <span class="status" id="status">Dibujando el mapa…</span>
+  </div>
+
+  <main class="stage">
+    <svg id="poster" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Póster: ¿Cuánta sal tiene el mar? Mapa con el Atlántico, el Mediterráneo, el Báltico y el Mar Muerto"></svg>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+  <script src="poster.js"></script>
+</body>
+</html>
