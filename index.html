@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Cuánta sal tiene el mar? · ICM</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Globo 3D -->
+  <div id="globe" aria-label="Globo terráqueo que gira"></div>
+
+  <!-- Cabecera -->
+  <header class="top">
+    <div class="title">
+      <h1>¿Cuánta sal tiene el mar? <span aria-hidden="true">🧂</span></h1>
+      <p class="hint">Toca un mar para verlo de cerca</p>
+
+      <div class="modes" role="group" aria-label="Elige qué quieres ver">
+        <button class="mode-btn is-active" data-mode="fixed" aria-pressed="true">
+          <span class="mode-ico" aria-hidden="true">🧂</span> Sal de siempre
+        </button>
+        <button class="mode-btn" data-mode="live" aria-pressed="false">
+          <span class="mode-ico" aria-hidden="true">🛰️</span> Sal de hoy
+        </button>
+      </div>
+    </div>
+
+    <a class="logo" href="https://www.icm.csic.es" target="_blank" rel="noopener" title="Institut de Ciències del Mar (ICM-CSIC)">
+      <img src="img/logo-icm.png" alt="Logo del ICM-CSIC"
+           onerror="this.closest('.logo').classList.add('logo--fallback')" />
+      <span class="logo-text">ICM<small>CSIC</small></span>
+    </a>
+  </header>
+
+  <!-- Leyenda (solo en modo "hoy") -->
+  <div class="legend" id="legend" hidden>
+    <div class="legend-title">Colores del mar hoy</div>
+    <div class="legend-bar"></div>
+    <div class="legend-labels"><span>poca sal</span><span>mucha sal</span></div>
+  </div>
+
+  <!-- Tarjetas de los mares -->
+  <section class="cards" id="cards" aria-label="Los mares"></section>
+
+  <!-- Mensajes -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Créditos -->
+  <footer class="credits" id="credits">
+    Mapa: Natural Earth · <span id="credit-live" hidden>Sal de hoy: Copernicus Marine Service</span>
+  </footer>
+
+  <!-- Mapa 2D oculto de OpenLayers: carga las teselas WMTS de Copernicus
+       y las convierte en la "piel" del globo -->
+  <div id="olmap" aria-hidden="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+  <script src="https://unpkg.com/globe.gl@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
